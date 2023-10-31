@@ -7,17 +7,23 @@ const Weather = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=60.17&lon=24.94&appid=${apiKey}`
-        );
+        // Получаем геопозицию пользователя
+        navigator.geolocation.getCurrentPosition(async (position) => {
+          const { latitude, longitude } = position.coords;
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+          // Отправляем запрос к OpenWeather API с использованием полученных координат
+          const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`
+          );
 
-        const data = await response.json();
-        setWeatherData(data); // Устанавливаем полученные данные в состояние
-        console.log("API Response:", data);
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+
+          const data = await response.json();
+          setWeatherData(data); // Устанавливаем полученные данные в состояние
+          console.log("API Response:", data);
+        });
       } catch (error) {
         // Обработка ошибок
         console.error("API Request Error:", error);
@@ -27,13 +33,18 @@ const Weather = () => {
     fetchData();
   }, [apiKey]); // Передаем apiKey в массив зависимостей, чтобы запрос выполнился при его изменении
 
+  // ...
+
   return (
     <div>
       {weatherData ? (
         <div>
           <h2>Weather Details</h2>
           <p>City: {weatherData.name}</p>
-          {/* Другие данные о погоде можно отобразить аналогичным образом */}
+          <p>Temperature: {weatherData.main.temp}°C</p>
+          <p>Humidity: {weatherData.main.humidity}%</p>
+          <p>Weather: {weatherData.weather[0].description}</p>
+          {/* Используйте weatherData.weather[0].icon для отображения иконки погоды */}
         </div>
       ) : (
         <p>Loading...</p>
