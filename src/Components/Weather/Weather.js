@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import WeatherInfo from "../WeatherInfo/WeatherInfo";
+import WeatherMap from "../WeatherMap/WeatherMap"; // Импортируйте компонент WeatherMap
+import { Flex } from "@chakra-ui/react";
 
 const Weather = () => {
   const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
@@ -36,20 +39,34 @@ const Weather = () => {
   // ...
 
   return (
-    <div>
-      {weatherData ? (
-        <div>
-          <h2>Weather Details</h2>
-          <p>City: {weatherData.name}</p>
-          <p>Temperature: {weatherData.main.temp}°C</p>
-          <p>Humidity: {weatherData.main.humidity}%</p>
-          <p>Weather: {weatherData.weather[0].description}</p>
-          {/* Используйте weatherData.weather[0].icon для отображения иконки погоды */}
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
+    <>
+      <Flex justifyContent={"center"}>
+        <WeatherInfo weatherData={weatherData} />
+        {weatherData && (
+          <WeatherMap
+            latitude={weatherData.coord.lat}
+            longitude={weatherData.coord.lon}
+            width={500}
+            height={300}
+          />
+        )}
+      </Flex>
+    </>
+    // <div>
+    //   {weatherData ? (
+    //     <div>
+    //       <h2>Weather Details</h2>
+    //       <p>City: {weatherData.name}</p>
+    //       <p>Temperature: {weatherData.main.temp}°C</p>
+    //       <p>Humidity: {weatherData.main.humidity}%</p>
+    //       <p>Weather: {weatherData.weather[0].description}</p>
+    //       {/* Используйте weatherData.weather[0].icon для отображения иконки погоды */}
+    //     </div>
+    //   ) : (
+    //     <p>Loading...</p>
+    //   )}
+
+    // </div>
   );
 };
 
