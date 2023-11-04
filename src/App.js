@@ -1,12 +1,15 @@
-import "./App.css";
+// import "./App.css";
+import { Container } from "@chakra-ui/react";
 import Weather from "./Components/Weather/Weather";
 
 function App() {
   return (
-    <div className="App">
+    // <div className="App">
+    <Container maxW="2xl" bg="blue.600" centerContent>
       Weather App
       <Weather />
-    </div>
+    </Container>
+    // </div>
   );
 }
 

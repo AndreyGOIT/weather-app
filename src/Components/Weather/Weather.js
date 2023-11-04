@@ -40,14 +40,14 @@ const Weather = () => {
 
   return (
     <>
-      <Flex justifyContent={"center"}>
+      <Flex justifyContent={"center"} alignItems={"center"}>
         <WeatherInfo weatherData={weatherData} />
         {weatherData && (
           <WeatherMap
             latitude={weatherData.coord.lat}
             longitude={weatherData.coord.lon}
-            width={500}
-            height={300}
+            width={650}
+            height={350}
           />
         )}
       </Flex>

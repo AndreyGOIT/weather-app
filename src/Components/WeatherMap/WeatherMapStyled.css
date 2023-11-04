@@ -1,5 +1,10 @@
 .map-container {
+  /* margin: 20px; */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
   width: 100%; /* Ширина контейнера будет 100% от родительского элемента */
   height: 300px; /* Высота контейнера составит 300 пикселей */
-  margin: 0 auto; /* Центрируем контейнер по горизонтали */
+  margin: 20 auto; /* Центрируем контейнер по горизонтали */
 }
