@@ -1,16 +1,19 @@
 // import "./App.css";
-import { Container } from "@chakra-ui/react";
-import Weather from "./Components/Weather/Weather";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { ChakraProvider, Box } from "@chakra-ui/react";
+import Home from "./Pages/Home";
 
-function App() {
+const App = () => {
   return (
-    // <div className="App">
-    <Container maxW="2xl" bg="blue.600" centerContent>
-      Weather App
-      <Weather />
-    </Container>
-    // </div>
+    <ChakraProvider>
+      <Box display="flex">
+        <Routes>
+          <Route path="/" element={<Home />} />{" "}
+        </Routes>
+      </Box>
+    </ChakraProvider>
   );
-}
+};
 
 export default App;
