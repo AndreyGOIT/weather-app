@@ -1,0 +1,37 @@
+/* MySidebar.Styled.css */
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  left: -200px;
+  background-color: lightblue; /* Нежно-голубой цвет */
+  transition: left 0.3s ease;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.hamburgerIcon {
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.menu {
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.inputField {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+.weatherInfo {
+  margin-top: 20px;
+  cursor: pointer;
+}
