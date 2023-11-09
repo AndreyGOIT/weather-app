@@ -5,7 +5,7 @@
   height: 100vh;
   position: fixed;
   left: -200px;
-  background-color: lightblue; /* Нежно-голубой цвет */
+  background-color: rgb(161, 52, 1); /* Нежно-голубой цвет */
   transition: left 0.3s ease;
 }
 

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import WeatherInfo from "../WeatherInfo/WeatherInfo";
 import WeatherMap from "../WeatherMap/WeatherMap"; // Импортируйте компонент WeatherMap
-import { Flex } from "@chakra-ui/react";
+import { Flex, Box, Container } from "@chakra-ui/react";
+// import sectionBG from "../../images/raindrops-on-a-window-with-a-blue-sky.jpg";
 
 const Weather = () => {
   const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
@@ -40,17 +41,26 @@ const Weather = () => {
 
   return (
     <>
-      <Flex justifyContent={"center"} alignItems={"center"}>
-        <WeatherInfo weatherData={weatherData} />
-        {weatherData && (
-          <WeatherMap
-            latitude={weatherData.coord.lat}
-            longitude={weatherData.coord.lon}
-            width={650}
-            height={350}
-          />
-        )}
-      </Flex>
+      <Box pl={"60px"} pr={"10px"}>
+        <Container centerContent>
+          {/* <section style={{ backgroundImage: `url(${sectionBG})` }}> */}
+          <Flex
+            direction={"column"}
+            justifyContent={"center"}
+            alignItems={"center"}
+          >
+            <WeatherInfo weatherData={weatherData} />
+            {weatherData && (
+              <WeatherMap
+                latitude={weatherData.coord.lat}
+                longitude={weatherData.coord.lon}
+                width={650}
+                height={350}
+              />
+            )}
+          </Flex>
+        </Container>
+      </Box>
     </>
     // <div>
     //   {weatherData ? (
