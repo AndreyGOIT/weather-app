@@ -1,5 +1,5 @@
-import Weather from "../Components/Weather/Weather";
-import MySidebar from "../Components/MySideBar/MySidebar.jsx";
+import Weather from "../components/Weather/Weather.js";
+import MySidebar from "../components/MySideBar/MySidebar.jsx";
 import { Box } from "@chakra-ui/react";
 import "./styles.css";
 // import { Flex, Box } from "@chakra-ui/react";

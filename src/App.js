@@ -3,12 +3,12 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { ChakraProvider, Box } from "@chakra-ui/react";
 import { chakraTheme } from "./styles/chakraTheme";
-import Home from "./Pages/Home";
+import Home from "./pages/Home";
 
 const App = () => {
   return (
     <ChakraProvider theme={chakraTheme}>
-      <Box display="flex">
+      <Box>
         <Routes>
           <Route path="/" element={<Home />} />{" "}
         </Routes>

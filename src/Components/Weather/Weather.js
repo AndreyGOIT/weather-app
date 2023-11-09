@@ -42,8 +42,7 @@ const Weather = () => {
   return (
     <>
       <Box pl={"60px"} pr={"10px"}>
-        <Container centerContent>
-          {/* <section style={{ backgroundImage: `url(${sectionBG})` }}> */}
+        <Container as={"section"} maxW={"4xl"} py={"20px"} centerContent>
           <Flex
             direction={"column"}
             justifyContent={"center"}
@@ -62,21 +61,6 @@ const Weather = () => {
         </Container>
       </Box>
     </>
-    // <div>
-    //   {weatherData ? (
-    //     <div>
-    //       <h2>Weather Details</h2>
-    //       <p>City: {weatherData.name}</p>
-    //       <p>Temperature: {weatherData.main.temp}°C</p>
-    //       <p>Humidity: {weatherData.main.humidity}%</p>
-    //       <p>Weather: {weatherData.weather[0].description}</p>
-    //       {/* Используйте weatherData.weather[0].icon для отображения иконки погоды */}
-    //     </div>
-    //   ) : (
-    //     <p>Loading...</p>
-    //   )}
-
-    // </div>
   );
 };
 

@@ -38,6 +38,7 @@ const WeatherInfo = ({ weatherData }) => {
   const timeOptions = { hour12: false, hour: "2-digit", minute: "2-digit" };
 
   const weatherDescription = weather[0].description;
+
   const roundedTemp = Math.round(temp); // Округляем значение temp до целого числа
 
   const iconUrl = `https://openweathermap.org/img/wn/${weather[0].icon}.png`;
@@ -70,7 +71,12 @@ const WeatherInfo = ({ weatherData }) => {
         </Heading>
         <Center>
           <Flex>
-            <Image boxSize="100px" src={iconUrl} alt="Weather Icon" />
+            <Image
+              boxSize="100px"
+              src={iconUrl}
+              alt="Weather Icon"
+              objectFit="cover"
+            />
             <Text as="b" fontSize="6xl">
               {roundedTemp}°C
             </Text>
