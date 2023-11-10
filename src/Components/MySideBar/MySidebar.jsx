@@ -27,7 +27,7 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
         setWeatherInfo(data);
 
         console.log("newAPI Response:", data);
-        console.log("WeatherInfo:", weatherInfo);
+        // console.log("WeatherInfo:", weatherInfo);
       } catch (error) {
         // Обработка ошибок
         console.error("API Request Error:", error);
@@ -44,7 +44,7 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
     return () => {
       clearTimeout(debounceTimeout);
     };
-  }, [city, apiKey, weatherInfo]);
+  }, [city, apiKey]);
 
   const handleWeatherInfoClick = () => {
     // Обработчик нажатия на окошко с информацией о погоде
@@ -57,9 +57,18 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
         isSidebarOpen ? `${styles.sidebar} ${styles.open}` : styles.sidebar
       }
     >
-      <div className={styles.hamburgerIcon} onClick={toggleSidebar}>
-        ☰
-      </div>
+      {isSidebarOpen ? (
+        <div
+          className={`${styles.crossIcon} ${styles.visible}`}
+          onClick={toggleSidebar}
+        >
+          ✕
+        </div>
+      ) : (
+        <div className={styles.hamburgerIcon} onClick={toggleSidebar}>
+          ☰
+        </div>
+      )}
 
       <div className={styles.menu}>
         <input

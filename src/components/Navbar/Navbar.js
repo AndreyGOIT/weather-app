@@ -11,7 +11,13 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <Flex as="nav" p={"10px"} alignItems={"center"}>
+    <Flex
+      as="nav"
+      color={"white"}
+      bgColor={"red.800"}
+      p={"10px"}
+      alignItems={"center"}
+    >
       <Heading as={"h1"}>Weather App</Heading>
       <Spacer />
 

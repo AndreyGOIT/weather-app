@@ -1,11 +1,13 @@
 /* MySidebar.Styled.css */
 
 .sidebar {
+  display: flex; /* Добавлено: использование flexbox для правильного позиционирования дочерних элементов */
+  flex-direction: column;
   width: 250px;
   height: 100vh;
   position: fixed;
-  left: -200px;
-  background-color: rgb(161, 52, 1); /* Нежно-голубой цвет */
+  left: -210px; /* Исправлено: сделано значение равным ширине панели, чтобы она начиналась снаружи экрана */
+  background-color: rgb(161, 52, 1);
   transition: left 0.3s ease;
 }
 
@@ -18,6 +20,24 @@
   cursor: pointer;
   padding: 10px;
   margin-top: 10px;
+  color: white;
+  margin-left: auto; /* Добавлено: прижимает иконку-гамбургер вправо */
+}
+
+/* Добавлены стили для крестика */
+.crossIcon {
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  margin-top: 10px;
+  color: white;
+  margin-left: auto;
+  display: none; /* Изначально скрыто */
+}
+
+/* Добавлены стили для крестика */
+.crossIcon.visible {
+  display: block;
 }
 
 .menu {
@@ -33,5 +53,9 @@
 
 .weatherInfo {
   margin-top: 20px;
+  padding: 15px;
   cursor: pointer;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
 }
