@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import WeatherInfo from "../WeatherInfo/WeatherInfo";
-import WeatherMap from "../WeatherMap/WeatherMap"; // Импортируйте компонент WeatherMap
+import WeatherMap from "../WeatherMap/WeatherMap";
 import { Flex, Box, Container } from "@chakra-ui/react";
-// import sectionBG from "../../images/raindrops-on-a-window-with-a-blue-sky.jpg";
 
-const Weather = () => {
+const Weather = ({ isSidebarOpen }) => {
   const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
   const [weatherData, setWeatherData] = useState(null);
 
@@ -37,11 +36,9 @@ const Weather = () => {
     fetchData();
   }, [apiKey]); // Передаем apiKey в массив зависимостей, чтобы запрос выполнился при его изменении
 
-  // ...
-
   return (
     <>
-      <Box pl={"60px"} pr={"10px"}>
+      <Box ml={isSidebarOpen ? "250px" : "50px"} pr={"10px"}>
         <Container as={"section"} maxW={"4xl"} py={"20px"} centerContent>
           <Flex
             direction={"column"}

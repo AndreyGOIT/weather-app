@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styles from "./MySidebar.module.css";
 
-const MySidebar = () => {
+const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
   const [city, setCity] = useState("");
   const [weatherInfo, setWeatherInfo] = useState(null);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
 
   useEffect(() => {
     let debounceTimeout;
