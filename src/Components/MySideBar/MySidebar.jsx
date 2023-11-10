@@ -44,7 +44,7 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
     return () => {
       clearTimeout(debounceTimeout);
     };
-  }, [city, apiKey]);
+  }, [city, apiKey, weatherInfo]);
 
   const handleWeatherInfoClick = () => {
     // Обработчик нажатия на окошко с информацией о погоде
