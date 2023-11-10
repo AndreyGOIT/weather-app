@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { Image } from "@chakra-ui/react";
 import styles from "./MySidebar.module.css";
 
 const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
   const [city, setCity] = useState("");
   const [weatherInfo, setWeatherInfo] = useState(null);
   const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
+
+  const iconUrl = `https://openweathermap.org/img/wn/${weatherInfo.weather[0].icon}.png`;
 
   useEffect(() => {
     let debounceTimeout;
@@ -58,36 +61,47 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
       }
     >
       {isSidebarOpen ? (
-        <div
-          className={`${styles.crossIcon} ${styles.visible}`}
-          onClick={toggleSidebar}
-        >
-          ✕
-        </div>
+        <>
+          <div
+            className={`${styles.crossIcon} ${styles.visible}`}
+            onClick={toggleSidebar}
+          >
+            ✕
+          </div>
+          <div className={styles.menu}>
+            <input
+              type="text"
+              placeholder="Введите город"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            />
+            {weatherInfo && (
+              <div
+                className={styles.weatherInfo}
+                onClick={handleWeatherInfoClick}
+              >
+                <span>
+                  {weatherInfo.name}:
+                  <Image
+                    boxSize="50px"
+                    src={iconUrl}
+                    alt="Weather Icon"
+                    objectFit="cover"
+                  />
+                </span>
+                <br />
+                Temp: {weatherInfo.main.temp}°C
+                <br />
+                Weather condition: {weatherInfo.weather[0].description}
+              </div>
+            )}
+          </div>
+        </>
       ) : (
         <div className={styles.hamburgerIcon} onClick={toggleSidebar}>
           ☰
         </div>
       )}
-
-      <div className={styles.menu}>
-        <input
-          type="text"
-          placeholder="Введите город"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-        />
-        {/* <button onClick={searchWeather}>Поиск</button> */}
-        {weatherInfo && (
-          <div className={styles.weatherInfo} onClick={handleWeatherInfoClick}>
-            Город: {weatherInfo.name}
-            <br />
-            Температура: {weatherInfo.main.temp}°C
-            <br />
-            Погодные условия: {weatherInfo.weather[0].description}
-          </div>
-        )}
-      </div>
     </div>
   );
 };

@@ -39,7 +39,7 @@ const Weather = ({ isSidebarOpen }) => {
   return (
     <>
       <Box ml={isSidebarOpen ? "250px" : "50px"} pr={"10px"}>
-        <Container as={"section"} maxW={"4xl"} py={"20px"} centerContent>
+        <Container maxW="container.xl" centerContent>
           <Flex
             direction={"column"}
             justifyContent={"center"}
@@ -50,8 +50,8 @@ const Weather = ({ isSidebarOpen }) => {
               <WeatherMap
                 latitude={weatherData.coord.lat}
                 longitude={weatherData.coord.lon}
-                width={650}
-                height={350}
+                width={1000}
+                height={750}
               />
             )}
           </Flex>

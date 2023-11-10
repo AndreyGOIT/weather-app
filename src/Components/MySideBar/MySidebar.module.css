@@ -6,7 +6,7 @@
   width: 250px;
   height: 100vh;
   position: fixed;
-  left: -210px; /* Исправлено: сделано значение равным ширине панели, чтобы она начиналась снаружи экрана */
+  left: -210px; /* Исправлено: сделано значение равным ширине, с учетом иконки-гамбургера */
   background-color: rgb(161, 52, 1);
   transition: left 0.3s ease;
 }
@@ -52,10 +52,16 @@
 }
 
 .weatherInfo {
+  display: flex;
+  align-items: center;
   margin-top: 20px;
-  padding: 15px;
   cursor: pointer;
   color: white;
   border: 1px solid white;
   border-radius: 5px;
+  padding: 10px; /* Добавлен отступ для лучшего визуального восприятия */
+}
+
+.weatherInfo img {
+  margin-right: 10px; /* Отступ между изображением и текстом */
 }
