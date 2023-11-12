@@ -59,7 +59,7 @@
   color: white;
   border: 1px solid white;
   border-radius: 5px;
-  padding: 10px; /* Добавлен отступ для лучшего визуального восприятия */
+  padding: 5px; /* Добавлен отступ для лучшего визуального восприятия */
 }
 
 .weatherInfo img {

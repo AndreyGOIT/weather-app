@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Image } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Image,
+  Card,
+  CardHeader,
+  Heading,
+  CardBody,
+  Flex,
+} from "@chakra-ui/react";
 import styles from "./MySidebar.module.css";
 
 const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
@@ -7,13 +16,17 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
   const [weatherInfo, setWeatherInfo] = useState(null);
   const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
 
-  const iconUrl = `https://openweathermap.org/img/wn/${weatherInfo.weather[0].icon}.png`;
-
   useEffect(() => {
     let debounceTimeout;
 
     const fetchData = async () => {
       try {
+        // Проверяем, есть ли значение city перед отправкой запроса
+        if (!city) {
+          setWeatherInfo(null); // Очищаем weatherInfo, чтобы не отображать предыдущие данные
+          return;
+        }
+
         // Отправляем запрос к OpenWeather API с использованием полученных координат
         console.log(city);
         console.log(apiKey);
@@ -49,9 +62,15 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
     };
   }, [city, apiKey]);
 
+  // const iconUrl = `https://openweathermap.org/img/wn/${weatherInfo.weather[0].icon}.png`;
+
   const handleWeatherInfoClick = () => {
     // Обработчик нажатия на окошко с информацией о погоде
     // Здесь можно добавить логику для отображения подробных данных о погоде на главной странице сайта
+  };
+  const handleCloseWeatherCard = () => {
+    setWeatherInfo(null);
+    setCity("");
   };
 
   return (
@@ -71,7 +90,7 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
           <div className={styles.menu}>
             <input
               type="text"
-              placeholder="Введите город"
+              placeholder=" Input city"
               value={city}
               onChange={(e) => setCity(e.target.value)}
             />
@@ -80,19 +99,36 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
                 className={styles.weatherInfo}
                 onClick={handleWeatherInfoClick}
               >
-                <span>
-                  {weatherInfo.name}:
-                  <Image
-                    boxSize="50px"
-                    src={iconUrl}
-                    alt="Weather Icon"
-                    objectFit="cover"
-                  />
-                </span>
-                <br />
-                Temp: {weatherInfo.main.temp}°C
-                <br />
-                Weather condition: {weatherInfo.weather[0].description}
+                <Center>
+                  <Card color={"white"} bgColor={"red.700"}>
+                    <Flex justifyContent={"flex-end"} pr={2}>
+                      <Box onClick={handleCloseWeatherCard}>✕</Box>
+                    </Flex>
+
+                    <CardHeader py={0}>
+                      <Flex align={"center"} gap={3}>
+                        <Heading size={2}>{weatherInfo.name}</Heading>
+                        <Image
+                          boxSize="50px"
+                          src={`https://openweathermap.org/img/wn/${weatherInfo.weather[0].icon}.png`}
+                          alt="Weather Icon"
+                          objectFit="cover"
+                        />
+                      </Flex>
+                    </CardHeader>
+                    <CardBody py={0}>
+                      <Box>Temperature: {weatherInfo.main.temp}°C</Box>
+                      <Box>
+                        Weather condition: {weatherInfo.weather[0].description}
+                      </Box>
+                    </CardBody>
+                    {/* <Box>
+                      {weatherInfo.name}:
+                    </Box>
+                    <br />
+                    <br /> */}
+                  </Card>
+                </Center>
               </div>
             )}
           </div>
