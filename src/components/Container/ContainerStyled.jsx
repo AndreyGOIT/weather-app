@@ -16,11 +16,11 @@ export const ContainerBox = ({ children, flex }) => {
         tabMax: "960px",
         desk: "1280px",
       }}
-      px={{
-        base: "15px",
-        tab: "60px",
-        desk: "120px",
-      }}
+      // px={{
+      //   base: "15px",
+      //   tab: "60px",
+      //   desk: "120px",
+      // }}
       mx={"auto"}
     >
       {children}

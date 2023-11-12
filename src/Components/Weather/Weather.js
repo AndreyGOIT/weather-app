@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import WeatherInfo from "../WeatherInfo/WeatherInfo";
 import WeatherMap from "../WeatherMap/WeatherMap";
-import { Flex, Box, Container } from "@chakra-ui/react";
+import { Flex, Box } from "@chakra-ui/react";
+import { BoxContainer } from "../Container/index";
 
 const Weather = ({ isSidebarOpen }) => {
   const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
@@ -39,7 +40,7 @@ const Weather = ({ isSidebarOpen }) => {
   return (
     <>
       <Box ml={isSidebarOpen ? "250px" : "50px"} pr={"10px"}>
-        <Container maxW="container.xl" centerContent>
+        <BoxContainer>
           <Flex
             direction={"column"}
             justifyContent={"center"}
@@ -50,12 +51,12 @@ const Weather = ({ isSidebarOpen }) => {
               <WeatherMap
                 latitude={weatherData.coord.lat}
                 longitude={weatherData.coord.lon}
-                width={1000}
-                height={750}
+                // width={1000}
+                // height={750}
               />
             )}
           </Flex>
-        </Container>
+        </BoxContainer>
       </Box>
     </>
   );
