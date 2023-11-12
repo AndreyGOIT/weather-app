@@ -1,6 +1,7 @@
 import React from "react";
 import "./WeatherInfoStyled.css";
-import { Grid, GridItem, Box, Flex, Center } from "@chakra-ui/react";
+import { Grid, GridItem, Box, Flex, Center, VStack } from "@chakra-ui/react";
+import { SunIcon } from "@chakra-ui/icons";
 import { Heading, Text, Image } from "@chakra-ui/react";
 
 const getWindDirection = (degree) => {
@@ -40,6 +41,7 @@ const WeatherInfo = ({ weatherData }) => {
   const weatherDescription = weather[0].description;
 
   const roundedTemp = Math.round(temp); // Округляем значение temp до целого числа
+  const roundedFeelsLikeTemp = Math.round(feels_like); // Округляем значение temp до целого числа
 
   const iconUrl = `https://openweathermap.org/img/wn/${weather[0].icon}.png`;
   const visibilityKm = visibility / 1000; // Переводим видимость из метров в километры
@@ -66,40 +68,60 @@ const WeatherInfo = ({ weatherData }) => {
   return (
     <div className="weather-container">
       <Box color={"white"}>
-        <Heading as="h2" size="md" noOfLines={1}>
-          {name}, {country}
-        </Heading>
         <Center>
-          <Flex>
-            <Image
-              boxSize="100px"
-              src={iconUrl}
-              alt="Weather Icon"
-              objectFit="cover"
-            />
-            <Text as="b" fontSize="6xl">
-              {roundedTemp}°C
-            </Text>
-          </Flex>
+          <VStack>
+            <Flex>
+              <Text as="b" fontSize="8xl">
+                {roundedTemp}°
+              </Text>
+              <Image
+                boxSize="150px"
+                src={iconUrl}
+                alt="Weather Icon"
+                objectFit="cover"
+              />
+            </Flex>
+            <Flex align={"center"} gap={3}>
+              <VStack>
+                <Heading as="h2" size="xl" noOfLines={1}>
+                  {name}, {country}
+                </Heading>
+                <p className="current-date">{formattedDate}</p>
+              </VStack>
+              <Text fontSize="6xl">16:22</Text>
+            </Flex>
+            <Flex alignItems={"center"} gap={3}>
+              <Text>{weatherDescription}</Text>
+              <p>and feels like: {roundedFeelsLikeTemp}°C</p>
+            </Flex>
+          </VStack>
         </Center>
-        <Text>{weatherDescription}</Text>
       </Box>
       <Box>
-        <Grid templateColumns="repeat(2, 1fr)" gap={6}>
+        <Grid templateColumns="repeat(3, 1fr)" gap={6}>
           <GridItem w="100%" minH="10" color={"white"}>
-            <p className="current-date">{formattedDate}</p>
-            <p>Feels like: {feels_like}°C</p>
-            <p>Temp min: {temp_min}°C</p>
-            <p>Temp max: {temp_max}°C</p>
-            <p>Humidity: {humidity}%</p>
-            <p>Visibility: {visibilityKm} km</p>
+            <Box borderWidth="1px" borderRadius="lg">
+              <p>
+                Temperature min: {temp_min}°C max: {temp_max}°C
+              </p>
+
+              <p>Humidity: {humidity}%</p>
+              <p>Visibility: {visibilityKm} km</p>
+            </Box>
           </GridItem>
           <GridItem w="100%" minH="10" color={"white"}>
-            <p>Wind Speed: {speed} m/s</p>
-            <p>Wind Gusts: {gust} m/s</p>
-            <p>Wind Direction: {windDirection}</p>
-            <p>Sunrise: {sunriseTime}</p>
-            <p>Sunset: {sunsetTime}</p>
+            <Box borderWidth="1px" borderRadius="lg">
+              <p>Wind Speed: {speed} m/s</p>
+              <p>Wind Gusts: {gust} m/s</p>
+              <p>Wind Direction: {windDirection}</p>
+            </Box>
+          </GridItem>
+          <GridItem w="100%" minH="10" color={"white"}>
+            <Box borderWidth="1px" borderRadius="lg">
+              <p>Sunrise: {sunriseTime}</p>
+              <SunIcon boxSize={8} />
+              <p>Sunset: {sunsetTime}</p>
+            </Box>
           </GridItem>
         </Grid>
       </Box>
