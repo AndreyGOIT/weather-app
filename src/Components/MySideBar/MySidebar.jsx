@@ -62,12 +62,11 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
     };
   }, [city, apiKey]);
 
-  // const iconUrl = `https://openweathermap.org/img/wn/${weatherInfo.weather[0].icon}.png`;
-
   const handleWeatherInfoClick = () => {
     // Обработчик нажатия на окошко с информацией о погоде
     // Здесь можно добавить логику для отображения подробных данных о погоде на главной странице сайта
   };
+
   const handleCloseWeatherCard = () => {
     setWeatherInfo(null);
     setCity("");
@@ -101,15 +100,20 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
               >
                 <Center>
                   <Card color={"white"} bgColor={"red.700"}>
-                    <Flex justifyContent={"flex-end"} pr={2}>
-                      <Box onClick={handleCloseWeatherCard}>✕</Box>
-                    </Flex>
-
+                    {/* Абсолютное позиционирование для крестика */}
+                    <div
+                      className={styles.closeIconContainer}
+                      onClick={handleCloseWeatherCard}
+                    >
+                      ✕
+                    </div>
                     <CardHeader py={0}>
                       <Flex align={"center"} gap={3}>
-                        <Heading size={2}>{weatherInfo.name}</Heading>
+                        <Heading as="h4" size="md">
+                          {weatherInfo.name}
+                        </Heading>
                         <Image
-                          boxSize="50px"
+                          boxSize="40px"
                           src={`https://openweathermap.org/img/wn/${weatherInfo.weather[0].icon}.png`}
                           alt="Weather Icon"
                           objectFit="cover"
@@ -122,11 +126,6 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
                         Weather condition: {weatherInfo.weather[0].description}
                       </Box>
                     </CardBody>
-                    {/* <Box>
-                      {weatherInfo.name}:
-                    </Box>
-                    <br />
-                    <br /> */}
                   </Card>
                 </Center>
               </div>

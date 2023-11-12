@@ -8,7 +8,7 @@
   position: fixed;
   left: -210px; /* Исправлено: сделано значение равным ширине, с учетом иконки-гамбургера */
   background-color: rgb(161, 52, 1);
-  transition: left 0.3s ease;
+  transition: left 0.5s ease;
 }
 
 .sidebar.open {
@@ -19,7 +19,7 @@
   font-size: 24px;
   cursor: pointer;
   padding: 10px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   color: white;
   margin-left: auto; /* Добавлено: прижимает иконку-гамбургер вправо */
 }
@@ -29,7 +29,7 @@
   font-size: 24px;
   cursor: pointer;
   padding: 10px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   color: white;
   margin-left: auto;
   display: none; /* Изначально скрыто */
@@ -41,8 +41,8 @@
 }
 
 .menu {
-  margin-top: 20px;
-  padding: 20px;
+  /* margin-top: 20px; */
+  padding: 0px 20px;
 }
 
 .inputField {
@@ -64,4 +64,14 @@
 
 .weatherInfo img {
   margin-right: 10px; /* Отступ между изображением и текстом */
+}
+
+/* Добавленные стили для крестика */
+.closeIconContainer {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  cursor: pointer;
+  color: white;
+  font-size: 15px;
 }
