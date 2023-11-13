@@ -8,7 +8,6 @@ import {
   Heading,
   CardBody,
   Flex,
-  Text,
 } from "@chakra-ui/react";
 import styles from "./MySidebar.module.css";
 
@@ -96,7 +95,7 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
               placeholder="🔍  Search for a city or airport"
               value={city}
               onChange={(e) => setCity(e.target.value)}
-              style={{ width: "100%", paddingLeft: "15px" }}
+              style={{ width: "100%", paddingLeft: "5px" }}
             />
             {weatherInfo && (
               <div
