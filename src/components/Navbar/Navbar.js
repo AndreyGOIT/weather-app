@@ -14,7 +14,7 @@ const Navbar = () => {
     <Flex
       as="nav"
       color={"white"}
-      bgColor={"red.800"}
+      bgColor={"gray.600"}
       p={"10px"}
       alignItems={"center"}
     >

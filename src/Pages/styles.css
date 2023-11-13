@@ -1,7 +1,6 @@
 .background-container {
-  height: 100vh;
-  background-image: url("../images/autumn_wp.jpg"); /* Путь к изображению относительно файла CSS */
-  background-size: cover; /* Растягивает изображение на всю область страницы */
-  background-repeat: no-repeat; /* Предотвращает повторение изображения */
+  height: 90vh;
+  background-color: lightgray;
+
   width: 100%; /* Чтобы контейнер занимал всю доступную ширину */
 }
