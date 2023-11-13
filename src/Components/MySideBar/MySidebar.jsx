@@ -8,6 +8,7 @@ import {
   Heading,
   CardBody,
   Flex,
+  Text,
 } from "@chakra-ui/react";
 import styles from "./MySidebar.module.css";
 
@@ -86,12 +87,16 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
           >
             ✕
           </div>
+          <Heading as="h3" size="xl" ml={5} mb={3} color="white">
+            Weather
+          </Heading>
           <div className={styles.menu}>
             <input
               type="text"
-              placeholder=" Input city"
+              placeholder="🔍  Search for a city or airport"
               value={city}
               onChange={(e) => setCity(e.target.value)}
+              style={{ width: "100%", paddingLeft: "15px" }}
             />
             {weatherInfo && (
               <div
@@ -107,7 +112,7 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
                     >
                       ✕
                     </div>
-                    <CardHeader py={0}>
+                    <CardHeader py={0} pl={2}>
                       <Flex align={"center"} gap={3}>
                         <Heading as="h4" size="md">
                           {weatherInfo.name}
@@ -120,7 +125,7 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
                         />
                       </Flex>
                     </CardHeader>
-                    <CardBody py={0}>
+                    <CardBody py={0} pl={2} pb={1}>
                       <Box>Temperature: {weatherInfo.main.temp}°C</Box>
                       <Box>
                         Weather condition: {weatherInfo.weather[0].description}
