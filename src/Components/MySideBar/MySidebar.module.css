@@ -7,7 +7,7 @@
   height: 100vh;
   position: fixed;
   left: -210px; /* Исправлено: сделано значение равным ширине, с учетом иконки-гамбургера */
-  background-color: rgb(177, 174, 174);
+  background-color: rgb(143, 142, 142);
   transition: left 0.5s ease;
 }
 
@@ -59,7 +59,7 @@
   cursor: pointer;
   color: white;
   border: 1px solid white;
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 5px; /* Добавлен отступ для лучшего визуального восприятия */
 }
 

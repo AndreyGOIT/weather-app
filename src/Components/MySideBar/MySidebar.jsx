@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
-  Box,
+  Text,
   Center,
   Image,
   Card,
@@ -8,6 +8,7 @@ import {
   Heading,
   CardBody,
   Flex,
+  Box,
 } from "@chakra-ui/react";
 import styles from "./MySidebar.module.css";
 
@@ -40,6 +41,12 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
 
         const data = await response.json();
 
+        if (data.cod && data.cod !== 200) {
+          throw new Error(
+            `OpenWeather API error! Code: ${data.cod}, Message: ${data.message}`
+          );
+        }
+
         setWeatherInfo(data);
 
         console.log("newAPI Response:", data);
@@ -61,6 +68,14 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
       clearTimeout(debounceTimeout);
     };
   }, [city, apiKey]);
+
+  const roundedTemp = weatherInfo ? Math.round(weatherInfo.main.temp) : null; // Округляем значение temp до целого числа
+  const roundedMinTemp = weatherInfo
+    ? Math.round(weatherInfo.main.temp_min)
+    : null;
+  const roundedMaxTemp = weatherInfo
+    ? Math.round(weatherInfo.main.temp_max)
+    : null;
 
   const handleWeatherInfoClick = () => {
     // Обработчик нажатия на окошко с информацией о погоде
@@ -103,7 +118,7 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
                 onClick={handleWeatherInfoClick}
               >
                 <Center>
-                  <Card color={"white"} bgColor={"red.700"}>
+                  <Card color={"white"} bgColor={"gray.400"} w={"210px"} pb={2}>
                     {/* Абсолютное позиционирование для крестика */}
                     <div
                       className={styles.closeIconContainer}
@@ -112,7 +127,7 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
                       ✕
                     </div>
                     <CardHeader py={0} pl={2}>
-                      <Flex align={"center"} gap={3}>
+                      <Flex justify={"space-between"} align={"center"} gap={3}>
                         <Heading as="h4" size="md">
                           {weatherInfo.name}
                         </Heading>
@@ -122,14 +137,18 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
                           alt="Weather Icon"
                           objectFit="cover"
                         />
+                        <Text fontSize="3xl">{roundedTemp}°</Text>
                       </Flex>
                     </CardHeader>
-                    <CardBody py={0} pl={2} pb={1}>
-                      <Box>Temperature: {weatherInfo.main.temp}°C</Box>
-                      <Box>
-                        Weather condition: {weatherInfo.weather[0].description}
-                      </Box>
-                    </CardBody>
+                    <CardBody py={4} pl={2}></CardBody>
+                    <Box px={2} w={"100%"}>
+                      <Flex justify={"space-between"}>
+                        <Text>{weatherInfo.weather[0].description}</Text>
+                        <Text fontSize={"md"}>
+                          L:{roundedMinTemp}° H:{roundedMaxTemp}°
+                        </Text>
+                      </Flex>
+                    </Box>
                   </Card>
                 </Center>
               </div>

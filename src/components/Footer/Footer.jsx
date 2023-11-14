@@ -11,7 +11,7 @@ const Footer = () => {
       alignItems={"center"}
       justifyContent={"center"}
     >
-      <Text>Created by A.Erokhin © 2022 All rights reserved</Text>
+      <Text>Created by A.Erokhin © 2023 All rights reserved</Text>
     </Flex>
   );
 };

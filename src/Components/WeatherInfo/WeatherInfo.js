@@ -156,24 +156,23 @@ const WeatherInfo = ({ weatherData }) => {
             </Box>
           </GridItem>
           <GridItem w="100%" minH="10" color={"white"}>
-            <Box borderWidth="1px" borderRadius="lg" py={2}>
-              <Text>Wind </Text>
-              <p>direction: {windDirection}</p>
-              <Flex justify={"center"} align={"center"}>
+            <Box borderWidth="1px" borderRadius="lg" py={2} px={1}>
+              <p>Wind direction: {windDirection}</p>
+              <Flex justify={"center"} align={"center"} py={1}>
                 <div className="image-container">
                   <Flex justify={"center"} align={"center"}>
                     <WindDirection degree={weatherData.wind.deg} />
                   </Flex>
                 </div>
               </Flex>
-              <Flex justify={"center"} gap={4} wrap={wrap}>
+              <Flex justify={"center"} gap={2} wrap={wrap}>
                 <p>speed: {roundedWindSpeed} m/s</p>
                 <p>gusts: {roundedWindGust} m/s</p>
               </Flex>
             </Box>
           </GridItem>
           <GridItem w="100%" minH="10" color={"white"}>
-            <Box borderWidth="1px" borderRadius="lg" py={4}>
+            <Box borderWidth="1px" borderRadius="lg" py={3}>
               <SunIcon boxSize={8} />
               <p>Sunrise: {sunriseTime}</p>
               <Divider my={2} />
