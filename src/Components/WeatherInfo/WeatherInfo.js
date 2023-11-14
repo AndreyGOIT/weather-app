@@ -58,7 +58,7 @@ const WeatherInfo = ({ weatherData }) => {
     main: { temp, feels_like, temp_min, temp_max, humidity, pressure },
     wind: { speed, gust },
     visibility,
-    sys: { country, sunrise, sunset },
+    sys: { sunrise, sunset },
   } = weatherData;
 
   const windDirection = getWindDirection(weatherData.wind.deg);
@@ -97,8 +97,8 @@ const WeatherInfo = ({ weatherData }) => {
     <div className="weather-container">
       <Box color={"white"} mb={3}>
         <Center>
-          <VStack>
-            <Flex h={20}>
+          <VStack spacing={0}>
+            <Flex mb={-3}>
               <Text as="b" fontSize="8xl">
                 {roundedTemp}°
               </Text>
@@ -110,12 +110,17 @@ const WeatherInfo = ({ weatherData }) => {
                 style={{ filter: "brightness(0) invert(1)" }}
               />
             </Flex>
-            <Flex height={"100px"} align={"center"} gap={3}>
-              <VStack>
-                <Heading as="h2" size="xl" noOfLines={1}>
-                  {name}, {country}
+            <Flex mt={-3} align={"center"} gap={3}>
+              <VStack align={"flex-start"} spacing={0}>
+                <Heading
+                  as="h2"
+                  size="xl"
+                  noOfLines={1}
+                  textTransform="uppercase"
+                >
+                  {name}
                 </Heading>
-                <Text>{formattedDate}</Text>
+                <Text fontSize={"lg"}>{formattedDate}</Text>
               </VStack>
               <Text fontSize="7xl">{currentTime}</Text>
             </Flex>
@@ -152,8 +157,8 @@ const WeatherInfo = ({ weatherData }) => {
           </GridItem>
           <GridItem w="100%" minH="10" color={"white"}>
             <Box borderWidth="1px" borderRadius="lg" py={2}>
-              <p>Wind Direction: {windDirection}</p>
-
+              <Text>Wind </Text>
+              <p>direction: {windDirection}</p>
               <Flex justify={"center"} align={"center"}>
                 <div className="image-container">
                   <Flex justify={"center"} align={"center"}>
@@ -162,8 +167,8 @@ const WeatherInfo = ({ weatherData }) => {
                 </div>
               </Flex>
               <Flex justify={"center"} gap={4} wrap={wrap}>
-                <p>Wind Speed: {roundedWindSpeed} m/s</p>
-                <p>Wind Gusts: {roundedWindGust} m/s</p>
+                <p>speed: {roundedWindSpeed} m/s</p>
+                <p>gusts: {roundedWindGust} m/s</p>
               </Flex>
             </Box>
           </GridItem>

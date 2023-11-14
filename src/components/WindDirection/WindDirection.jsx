@@ -42,7 +42,7 @@ const WindDirection = ({ degree }) => {
   const { icon } = directions[index];
 
   return (
-    <Box display="flex" alignItems="center" fontSize="48px" color={"gray"}>
+    <Box display="flex" alignItems="center" fontSize="40px" color={"gray"}>
       {icon}
       {/* <Text ml="2">{label}</Text> */}
     </Box>
