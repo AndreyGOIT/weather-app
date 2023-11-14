@@ -1,13 +1,6 @@
-import {
-  Flex,
-  Box,
-  Heading,
-  HStack,
-  Text,
-  Button,
-  Spacer,
-} from "@chakra-ui/react";
+import { Flex, Heading, HStack, Text, Button, Spacer } from "@chakra-ui/react";
 import React from "react";
+import Logo from "../Logo/Logo";
 
 const Navbar = () => {
   return (
@@ -18,11 +11,28 @@ const Navbar = () => {
       p={"10px"}
       alignItems={"center"}
     >
-      <Heading as={"h1"}>Weather App</Heading>
+      <HStack spacing="20px">
+        <Logo />
+
+        <Heading as={"h1"}>
+          {/* <Highlight
+            query="weather"
+            styles={{
+              px: "2",
+              py: "1",
+              rounded: "full",
+              bg: "yellow.400",
+              fontStyle: "italic",
+              color: "white",
+            }}
+          > */}
+          My <i>Weather</i>
+          {/* </Highlight> */}
+        </Heading>
+      </HStack>
       <Spacer />
 
       <HStack spacing="20px">
-        <Box>LOGO</Box>
         <Text>info@weather.com</Text>
         <Button colorScheme="gray">Log</Button>
       </HStack>

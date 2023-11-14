@@ -1,7 +1,6 @@
-// logoLogic.js
 export function updateLogo() {
-  const sun = document.querySelector("styles.sun");
-  const moon = document.querySelector("styles.moon");
+  const sun = document.querySelector(".sun");
+  const moon = document.querySelector(".moon");
   const currentTime = new Date();
   const currentHour = currentTime.getHours();
 
