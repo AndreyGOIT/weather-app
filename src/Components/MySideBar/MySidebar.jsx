@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import styles from "./MySidebar.module.css";
 
-const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
+const MySidebar = ({ isSidebarOpen, toggleSidebar, onWeatherInfoClick }) => {
   const [city, setCity] = useState("");
   const [weatherInfo, setWeatherInfo] = useState(null);
   const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
@@ -80,6 +80,9 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
   const handleWeatherInfoClick = () => {
     // Обработчик нажатия на окошко с информацией о погоде
     // Здесь можно добавить логику для отображения подробных данных о погоде на главной странице сайта
+    if (weatherInfo) {
+      onWeatherInfoClick(weatherInfo);
+    }
   };
 
   const handleCloseWeatherCard = () => {
@@ -88,11 +91,13 @@ const MySidebar = ({ isSidebarOpen, toggleSidebar }) => {
   };
 
   return (
-    <div
-      className={
-        isSidebarOpen ? `${styles.sidebar} ${styles.open}` : styles.sidebar
-      }
-    >
+    // <div
+    //   className={
+    //     isSidebarOpen ? `${styles.sidebar} ${styles.open}` : styles.sidebar
+    //   }
+    // >
+    // <div className={`${styles.sidebar} ${isSidebarOpen ? styles.open : ""}`}>
+    <div>
       {isSidebarOpen ? (
         <>
           <div

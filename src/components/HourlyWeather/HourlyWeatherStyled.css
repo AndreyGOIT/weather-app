@@ -1,0 +1,14 @@
+.weather-container {
+  width: 100%;
+  text-align: center;
+  margin: 0px;
+  padding: 20px 20px 20px 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #276be9;
+
+  /* background-image: url("../../images/cloudy.gif"); */
+  /*  background-size: cover; Растягивает изображение на всю область элемента */
+  /*background-repeat: no-repeat; /* Предотвращает повторение изображения */
+  z-index: 1;
+}

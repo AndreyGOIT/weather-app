@@ -1,18 +1,21 @@
 /* MySidebar.Styled.css */
 
 .sidebar {
+  opacity: 0;
+  visibility: hidden;
   display: flex; /* Добавлено: использование flexbox для правильного позиционирования дочерних элементов */
   flex-direction: column;
   width: 250px;
   height: 100vh;
   position: fixed;
-  left: -210px; /* Исправлено: сделано значение равным ширине, с учетом иконки-гамбургера */
+  left: 0; /* Исправлено: сделано значение равным ширине, с учетом иконки-гамбургера */
   background-color: rgb(143, 142, 142);
-  transition: left 0.5s ease;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
 .sidebar.open {
-  left: 0;
+  opacity: 1;
+  visibility: visible;
 }
 
 .hamburgerIcon {

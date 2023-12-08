@@ -1,7 +1,7 @@
 .weather-container {
   width: 100%;
   text-align: center;
-  margin: 20px;
+  margin-top: 20px;
   padding: 0px 20px 20px 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -25,7 +25,7 @@
   height: 80px;
   border-radius: 50%;
   padding-top: 20px;
-  background-image: url("../../images/Azimut.jpeg");
+  background-image: url("../../images/compass.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

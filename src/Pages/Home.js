@@ -6,9 +6,14 @@ import "./styles.css";
 
 const Home = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [weatherData, setWeatherData] = useState(null);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleWeatherInfoClick = (data) => {
+    setWeatherData(data);
   };
 
   return (
@@ -17,8 +22,10 @@ const Home = () => {
         <MySidebar
           isSidebarOpen={isSidebarOpen}
           toggleSidebar={toggleSidebar}
+          onWeatherInfoClick={handleWeatherInfoClick}
         />
-        <Weather isSidebarOpen={isSidebarOpen} />
+        <Weather isSidebarOpen={isSidebarOpen} weatherData={weatherData} />
+        {/* <Weather /> */}
       </Box>
     </>
   );
